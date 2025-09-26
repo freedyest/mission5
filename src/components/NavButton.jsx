@@ -19,4 +19,4 @@ function NavButton({ children, onClick, variant = "primary", className = "" }) {
   );
 }
 
-export default Button;
+export default NavButton;

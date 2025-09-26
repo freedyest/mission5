@@ -1,11 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Header from "../components/header";
 import eyesOff from "../assets/eyesoff.png";
 import eyesOn from "../assets/eyeson.png";
+import NavButton from "../components/NavButton";
 
 function Register() {
   const navigate = useNavigate();
-
+  //handle register
+  const handleRegister = (e) => {
+    e.preventDefault();
+    navigate("/login");
+  };
   // State untuk password
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
@@ -29,19 +35,9 @@ function Register() {
   };
 
   return (
-    <div>
+    <div className="bg-[#FFFDF3]">
       {/* Header */}
-      <header>
-        <div className="fixed top-0 left-0 w-full bg-white h-auto">
-          <div className="px-4 lg:px-14 py-2 flex items-center">
-            <img
-              src={`${import.meta.env.BASE_URL}logo3.png`}
-              alt="Logo"
-              className="h-12 w-auto"
-            />
-          </div>
-        </div>
-      </header>
+      <Header></Header>
 
       {/* Main section */}
       <section
@@ -101,7 +97,7 @@ function Register() {
                 <button
                   type="button"
                   onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className="flex items-center border border-gray-300 rounded-l-md px-2 py-2 bg-white"
+                  className="flex items-center border border-gray-300 rounded-l-md px-2 py-2 bg-white mr-8"
                 >
                   <img
                     src={selectedCountry.flag}
@@ -110,7 +106,9 @@ function Register() {
                   />
                   {selectedCountry.code}
                   <svg
-                    className="w-4 h-4 ml-1"
+                    className={`w-10 h-10 ml-1 transform transition-transform duration-200 ${
+                      dropdownOpen ? "rotate-180" : "rotate-0"
+                    }`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -215,23 +213,23 @@ function Register() {
             </div>
 
             <div>
-              <button
-                type="button"
-                onClick={() => navigate("/Home")}
-                className="w-full font-bold bg-green-400 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mb-8"
+              <NavButton
+                onClick={handleRegister}
+                variant="primary"
+                className="mb-6"
               >
-                Daftar
-              </button>
+                Register
+              </NavButton>
             </div>
 
             <div>
-              <button
-                type="button"
-                onClick={() => navigate("/Login")}
-                className="w-full font-bold bg-green-200 text-green-400 py-2 px-4 rounded-md hover:bg-green-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              <NavButton
+                onClick={handleRegister}
+                variant="secondary"
+                className="mb-6"
               >
-                Masuk
-              </button>
+                Login
+              </NavButton>
             </div>
 
             {/* Atau */}
@@ -240,16 +238,6 @@ function Register() {
               <span className="px-3 text-gray-500 text-sm">atau</span>
               <hr className="flex-grow border-gray-300" />
             </div>
-
-            {/* Sosmed */}
-            <button className="flex justify-center items-center w-full font-bold bg-white text-darkgray py-2 px-4 rounded-md hover:bg-slate-400 mb-4 border border-darkgray">
-              <img
-                src={`${import.meta.env.BASE_URL}fb.png`}
-                alt="Facebook"
-                className="h-10 w-10 mr-2"
-              />
-              <span>Daftar dengan Facebook</span>
-            </button>
 
             <button className="flex justify-center items-center w-full font-bold bg-white text-darkgray py-2 px-4 rounded-md hover:bg-slate-400 border border-darkgray">
               <img

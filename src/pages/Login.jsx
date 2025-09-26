@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Header from "../components/header.jsx";
 import eyesOff from "../assets/eyesoff.png";
 import eyesOn from "../assets/eyeson.png";
 import NavButton from "../components/NavButton.jsx";
@@ -30,19 +31,8 @@ function Login() {
 
   return (
     <div className="bg-[#FFFDF3]">
-      <header>
-        <div className="fixed top-0 left-0 w-full bg-white h-auto shadow-lg md:shadow-sm">
-          <div className="px-4 lg:px-14 py-2 flex items-center">
-            {/* ✅ logo dari public */}
-            <img
-              src={`${import.meta.env.BASE_URL}Logo.png`}
-              alt="Logo"
-              className="h-12 w-auto"
-            />
-          </div>
-        </div>
-      </header>
-
+      {/* <header></header> */}
+      <Header> </Header>
       <section
         id="loginform"
         className="min-h-screen flex items-center justify-center py-32 md:py-36"
