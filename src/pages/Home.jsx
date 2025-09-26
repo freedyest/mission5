@@ -3,10 +3,10 @@ import Header from "../components/header.jsx";
 import NavButton from "../components/NavButton.jsx";
 function Home() {
   return (
-    <div>
-      <div className="px-2 md:px-10">
+    <div className="">
+      <div className="px-2 md:px-10 bg-[#FFFDF3]">
         {/* <!--header--> */}
-        <Header />
+        <Header withUserMenu={true} />
 
         {/* <!--spot--> */}
         <section id="spotlight" className="pt-28 bg-white rounded-lg">
