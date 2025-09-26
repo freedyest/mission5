@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import Header from "../components/header.jsx";
 import NavButton from "../components/NavButton.jsx";
+import { courses } from "../data/courses";
+import VideoCard from "../components/VideoCard";
 function Home() {
   return (
     <div className="">
@@ -12,7 +14,7 @@ function Home() {
         <section id="spotlight" className="pt-28 bg-white rounded-lg">
           <div className="relative w-full h-[500px] md:h-64 flex items-center justify-center rounded-lg">
             <img
-              src="img/spot.jpg"
+              src={`${import.meta.env.BASE_URL}spot.jpg`}
               alt="Spotlight"
               className="rounded-lg absolute inset-0 w-full h-full object-cover z-0"
             />
@@ -41,7 +43,7 @@ function Home() {
             <h2 className="text-black text-3xl font-bold">
               Koleksi Video Pembelajaran Unggulan
             </h2>
-            <p className="text-darkgray text-lg font-semibold mt-3">
+            <p className="text-[#333333AD] text-lg font-semibold mt-3">
               Jelajahi Dunia Pengetahuan Melalui Pilihan Kami!
             </p>
           </div>
@@ -70,345 +72,24 @@ function Home() {
 
         {/* <!--video course--> */}
         <section id="videocourse" className="w-full mt-10">
-          <div className="w-full md:flex flex-wrap justify-evenly ">
-            {/* contoh 1 */}
-            <div className="containervideo desain">
-              <img
-                src="img/1.jpg"
-                alt="draft1"
-                className="w-1/3 box-border h-32 rounded-lg md:videoimg"
+          <div className="w-full md:flex flex-wrap justify-evenly gap-6">
+            {courses.map((course) => (
+              <VideoCard
+                key={course.id}
+                image={course.image}
+                title={course.title}
+                description={course.desc}
+                avatar={course.avatar}
+                name={course.instructor}
+                role={course.role}
+                company={course.company}
+                rating={course.rating}
+                review={course.reviews}
+                price={course.price}
               />
-              <div className="w-3/5 md:flex md:w-full md:flex-wrap">
-                <h3 className="font-bold md:w-full">Beginner Design course</h3>
-                <p className="hidden md:flex">
-                  Mulai transformasi dengan instruktur profesional dengan harga
-                  terjangkau dan kurikulum terbaik
-                </p>
-                <div className="flex justify-between items-center">
-                  <img
-                    src="img/avatar1.png"
-                    alt="avatar1"
-                    className="py-4 avatarimg rounded-lg w-1/5"
-                  />
-                  <div className="w-4/5 p-2">
-                    <h4 className="font-semibold">Alex Ortega</h4>
-                    <p className="text-darkgray">Senior Accountant</p>
-                  </div>
-                  <p className="hidden md:block font-semibold text-black ml-auto">
-                    di gojek
-                  </p>
-                </div>
-              </div>
-
-              <div className="rating-container">
-                <div className="rating">
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star-half-stroke"></i>
-                  <i className="fa-regular fa-star"></i>
-                </div>
-                <span className="review">3.5 (86)</span>
-                <span className="price">Rp 300K</span>
-              </div>
-            </div>
-
-            {/* contoh 1 */}
-            <div className="containervideo desain">
-              <img
-                src="img/1.jpg"
-                alt="draft1"
-                className="w-1/3 box-border h-32 rounded-lg md:videoimg"
-              />
-              <div className="w-3/5 md:flex md:w-full md:flex-wrap">
-                <h3 className="font-bold md:w-full">Beginner Design course</h3>
-                <p className="hidden md:flex">
-                  Mulai transformasi dengan instruktur profesional dengan harga
-                  terjangkau dan kurikulum terbaik
-                </p>
-                <div className="flex justify-between items-center">
-                  <img
-                    src="img/avatar1.png"
-                    alt="avatar1"
-                    className="py-4 avatarimg rounded-lg w-1/5"
-                  />
-                  <div className="w-4/5 p-2">
-                    <h4 className="font-semibold">Alex Ortega</h4>
-                    <p className="text-darkgray">Senior Accountant</p>
-                  </div>
-                  <p className="hidden md:block font-semibold text-black ml-auto">
-                    di gojek
-                  </p>
-                </div>
-              </div>
-
-              <div className="rating-container">
-                <div className="rating">
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star-half-stroke"></i>
-                  <i className="fa-regular fa-star"></i>
-                </div>
-                <span className="review">3.5 (86)</span>
-                <span className="price">Rp 300K</span>
-              </div>
-            </div>
-
-            {/* contoh 1 */}
-            <div className="containervideo desain">
-              <img
-                src="img/1.jpg"
-                alt="draft1"
-                className="w-1/3 box-border h-32 rounded-lg md:videoimg"
-              />
-              <div className="w-3/5 md:flex md:w-full md:flex-wrap">
-                <h3 className="font-bold md:w-full">Beginner Design course</h3>
-                <p className="hidden md:flex">
-                  Mulai transformasi dengan instruktur profesional dengan harga
-                  terjangkau dan kurikulum terbaik
-                </p>
-                <div className="flex justify-between items-center">
-                  <img
-                    src="img/avatar1.png"
-                    alt="avatar1"
-                    className="py-4 avatarimg rounded-lg w-1/5"
-                  />
-                  <div className="w-4/5 p-2">
-                    <h4 className="font-semibold">Alex Ortega</h4>
-                    <p className="text-darkgray">Senior Accountant</p>
-                  </div>
-                  <p className="hidden md:block font-semibold text-black ml-auto">
-                    di gojek
-                  </p>
-                </div>
-              </div>
-
-              <div className="rating-container">
-                <div className="rating">
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star-half-stroke"></i>
-                  <i className="fa-regular fa-star"></i>
-                </div>
-                <span className="review">3.5 (86)</span>
-                <span className="price">Rp 300K</span>
-              </div>
-            </div>
-
-            {/* contoh 1 */}
-            <div className="containervideo desain">
-              <img
-                src="img/1.jpg"
-                alt="draft1"
-                className="w-1/3 box-border h-32 rounded-lg md:videoimg"
-              />
-              <div className="w-3/5 md:flex md:w-full md:flex-wrap">
-                <h3 className="font-bold md:w-full">Beginner Design course</h3>
-                <p className="hidden md:flex">
-                  Mulai transformasi dengan instruktur profesional dengan harga
-                  terjangkau dan kurikulum terbaik
-                </p>
-                <div className="flex justify-between items-center">
-                  <img
-                    src="img/avatar1.png"
-                    alt="avatar1"
-                    className="py-4 avatarimg rounded-lg w-1/5"
-                  />
-                  <div className="w-4/5 p-2">
-                    <h4 className="font-semibold">Alex Ortega</h4>
-                    <p className="text-darkgray">Senior Accountant</p>
-                  </div>
-                  <p className="hidden md:block font-semibold text-black ml-auto">
-                    di gojek
-                  </p>
-                </div>
-              </div>
-
-              <div className="rating-container">
-                <div className="rating">
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star-half-stroke"></i>
-                  <i className="fa-regular fa-star"></i>
-                </div>
-                <span className="review">3.5 (86)</span>
-                <span className="price">Rp 300K</span>
-              </div>
-            </div>
-
-            {/* contoh 1 */}
-            <div className="containervideo desain">
-              <img
-                src="img/1.jpg"
-                alt="draft1"
-                className="w-1/3 box-border h-32 rounded-lg md:videoimg"
-              />
-              <div className="w-3/5 md:flex md:w-full md:flex-wrap">
-                <h3 className="font-bold md:w-full">Beginner Design course</h3>
-                <p className="hidden md:flex">
-                  Mulai transformasi dengan instruktur profesional dengan harga
-                  terjangkau dan kurikulum terbaik
-                </p>
-                <div className="flex justify-between items-center">
-                  <img
-                    src="img/avatar1.png"
-                    alt="avatar1"
-                    className="py-4 avatarimg rounded-lg w-1/5"
-                  />
-                  <div className="w-4/5 p-2">
-                    <h4 className="font-semibold">Alex Ortega</h4>
-                    <p className="text-darkgray">Senior Accountant</p>
-                  </div>
-                  <p className="hidden md:block font-semibold text-black ml-auto">
-                    di gojek
-                  </p>
-                </div>
-              </div>
-
-              <div className="rating-container">
-                <div className="rating">
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star-half-stroke"></i>
-                  <i className="fa-regular fa-star"></i>
-                </div>
-                <span className="review">3.5 (86)</span>
-                <span className="price">Rp 300K</span>
-              </div>
-            </div>
-
-            {/* contoh 1 */}
-            <div className="containervideo desain">
-              <img
-                src="img/1.jpg"
-                alt="draft1"
-                className="w-1/3 box-border h-32 rounded-lg md:videoimg"
-              />
-              <div className="w-3/5 md:flex md:w-full md:flex-wrap">
-                <h3 className="font-bold md:w-full">Beginner Design course</h3>
-                <p className="hidden md:flex">
-                  Mulai transformasi dengan instruktur profesional dengan harga
-                  terjangkau dan kurikulum terbaik
-                </p>
-                <div className="flex justify-between items-center">
-                  <img
-                    src="img/avatar1.png"
-                    alt="avatar1"
-                    className="py-4 avatarimg rounded-lg w-1/5"
-                  />
-                  <div className="w-4/5 p-2">
-                    <h4 className="font-semibold">Alex Ortega</h4>
-                    <p className="text-darkgray">Senior Accountant</p>
-                  </div>
-                  <p className="hidden md:block font-semibold text-black ml-auto">
-                    di gojek
-                  </p>
-                </div>
-              </div>
-
-              <div className="rating-container">
-                <div className="rating">
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star-half-stroke"></i>
-                  <i className="fa-regular fa-star"></i>
-                </div>
-                <span className="review">3.5 (86)</span>
-                <span className="price">Rp 300K</span>
-              </div>
-            </div>
-
-            {/* contoh 1 */}
-            <div className="containervideo desain">
-              <img
-                src="img/1.jpg"
-                alt="draft1"
-                className="w-1/3 box-border h-32 rounded-lg md:videoimg"
-              />
-              <div className="w-3/5 md:flex md:w-full md:flex-wrap">
-                <h3 className="font-bold md:w-full">Beginner Design course</h3>
-                <p className="hidden md:flex">
-                  Mulai transformasi dengan instruktur profesional dengan harga
-                  terjangkau dan kurikulum terbaik
-                </p>
-                <div className="flex justify-between items-center">
-                  <img
-                    src="img/avatar1.png"
-                    alt="avatar1"
-                    className="py-4 avatarimg rounded-lg w-1/5"
-                  />
-                  <div className="w-4/5 p-2">
-                    <h4 className="font-semibold">Alex Ortega</h4>
-                    <p className="text-darkgray">Senior Accountant</p>
-                  </div>
-                  <p className="hidden md:block font-semibold text-black ml-auto">
-                    di gojek
-                  </p>
-                </div>
-              </div>
-
-              <div className="rating-container">
-                <div className="rating">
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star-half-stroke"></i>
-                  <i className="fa-regular fa-star"></i>
-                </div>
-                <span className="review">3.5 (86)</span>
-                <span className="price">Rp 300K</span>
-              </div>
-            </div>
-
-            {/* contoh 1 */}
-            <div className="containervideo desain">
-              <img
-                src="img/1.jpg"
-                alt="draft1"
-                className="w-1/3 box-border h-32 rounded-lg md:videoimg"
-              />
-              <div className="w-3/5 md:flex md:w-full md:flex-wrap">
-                <h3 className="font-bold md:w-full">Beginner Design course</h3>
-                <p className="hidden md:flex">
-                  Mulai transformasi dengan instruktur profesional dengan harga
-                  terjangkau dan kurikulum terbaik
-                </p>
-                <div className="flex justify-between items-center">
-                  <img
-                    src="img/avatar1.png"
-                    alt="avatar1"
-                    className="py-4 avatarimg rounded-lg w-1/5"
-                  />
-                  <div className="w-4/5 p-2">
-                    <h4 className="font-semibold">Alex Ortega</h4>
-                    <p className="text-darkgray">Senior Accountant</p>
-                  </div>
-                  <p className="hidden md:block font-semibold text-black ml-auto">
-                    di gojek
-                  </p>
-                </div>
-              </div>
-
-              <div className="rating-container">
-                <div className="rating">
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star-half-stroke"></i>
-                  <i className="fa-regular fa-star"></i>
-                </div>
-                <span className="review">3.5 (86)</span>
-                <span className="price">Rp 300K</span>
-              </div>
-            </div>
+            ))}
           </div>
         </section>
-
         {/* <!--news--> */}
         <section id="newsletter" className=" bg-black">
           <div className="relative w-full h-auto flex items-center justify-center">
