@@ -1,13 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import eyesOff from "../assets/eyesoff.png";
 import eyesOn from "../assets/eyeson.png";
-
+import NavButton from "../components/NavButton.jsx";
 function Login() {
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    navigate("/home");
+    navigate("/Home");
+  };
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    navigate("/Register");
   };
 
   const togglePassword = () => {
@@ -24,13 +29,13 @@ function Login() {
   };
 
   return (
-    <div className="bg-lightgray">
+    <div className="bg-[#FFFDF3]">
       <header>
         <div className="fixed top-0 left-0 w-full bg-white h-auto shadow-lg md:shadow-sm">
           <div className="px-4 lg:px-14 py-2 flex items-center">
             {/* ✅ logo dari public */}
             <img
-              src={`${import.meta.env.BASE_URL}logo3.png`}
+              src={`${import.meta.env.BASE_URL}Logo.png`}
               alt="Logo"
               className="h-12 w-auto"
             />
@@ -43,8 +48,8 @@ function Login() {
         className="min-h-screen flex items-center justify-center py-32 md:py-36"
       >
         <div className="bg-white rounded-lg shadow-lg p-4 md:p-8 text-center w-4/5 md:w-1/2">
-          <h1 className="text-3xl">Masukkan Akun</h1>
-          <h2 className="text-darkgray text-lg">
+          <h1 className="text-3xl font-bold">Masukkan Akun</h1>
+          <h2 className="text-[#333333AD] text-lg">
             Yuk, lanjutin belajarmu di videobelajar.
           </h2>
 
@@ -55,7 +60,7 @@ function Login() {
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700"
               >
-                Email <span className="text-red-600">*</span>
+                E-mail <span className="text-red-600">*</span>
               </label>
               <input
                 type="email"
@@ -99,24 +104,24 @@ function Login() {
 
             {/* Tombol Masuk */}
             <div>
-              <button
-                type="button"
+              <NavButton
                 onClick={handleLogin}
-                className="w-full font-bold bg-green-400 text-white py-2 px-4 rounded-md hover:bg-green-700 mb-8"
+                variant="primary"
+                className="mb-8"
               >
                 Masuk
-              </button>
+              </NavButton>
             </div>
 
             {/* Tombol Daftar */}
             <div>
-              <button
-                type="button"
-                onClick={() => navigate("/register")}
-                className="w-full font-bold bg-green-200 text-green-400 py-2 px-4 rounded-md hover:bg-green-600 hover:text-white"
+              <NavButton
+                onClick={handleRegister}
+                variant="secondary"
+                className="mb-6"
               >
-                Daftar
-              </button>
+                Register
+              </NavButton>
             </div>
 
             {/* Atau */}
@@ -125,16 +130,6 @@ function Login() {
               <span className="px-3 text-gray-500 text-sm">atau</span>
               <hr className="flex-grow border-gray-300" />
             </div>
-
-            {/* Sosmed */}
-            <button className="flex justify-center items-center w-full font-bold bg-white text-darkgray py-2 px-4 rounded-md hover:bg-slate-400 mb-4 border border-darkgray">
-              <img
-                src={`${import.meta.env.BASE_URL}fb.png`}
-                alt="Facebook"
-                className="h-10 w-10 mr-2"
-              />
-              <span>Masuk dengan Facebook</span>
-            </button>
 
             <button className="flex justify-center items-center w-full font-bold bg-white text-darkgray py-2 px-4 rounded-md hover:bg-slate-400 border border-darkgray">
               <img

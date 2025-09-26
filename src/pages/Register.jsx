@@ -217,7 +217,7 @@ function Register() {
             <div>
               <button
                 type="button"
-                onClick={() => navigate("/home")}
+                onClick={() => navigate("/Home")}
                 className="w-full font-bold bg-green-400 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mb-8"
               >
                 Daftar
@@ -227,7 +227,7 @@ function Register() {
             <div>
               <button
                 type="button"
-                onClick={() => navigate("/login")}
+                onClick={() => navigate("/Login")}
                 className="w-full font-bold bg-green-200 text-green-400 py-2 px-4 rounded-md hover:bg-green-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
                 Masuk
