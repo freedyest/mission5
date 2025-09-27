@@ -8,7 +8,7 @@ function Header({ withUserMenu = false }) {
   const menuRef = useRef(null);
   const navigate = useNavigate();
 
-  // Tutup dropdown avatar kalau klik di luar
+  // close dropdown outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -28,7 +28,7 @@ function Header({ withUserMenu = false }) {
 
   return (
     <header>
-      <div className="fixed top-0 left-0 w-full bg-white h-auto z-50 shadow-sm">
+      <div className="fixed top-0 left-0 w-full bg-white h-auto z-50 shadow-lg">
         <div className="px-4 lg:px-16 py-2 flex bg-white items-center justify-between">
           {/* Logo kiri */}
           <div className="flex items-center">

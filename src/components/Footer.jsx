@@ -11,7 +11,7 @@ function Footer() {
     setOpen((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
-  // reusable chevron SVG (right-facing, rotate to point down)
+  // arrow
   const Chevron = ({ isOpen }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"

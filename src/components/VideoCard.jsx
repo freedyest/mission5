@@ -1,5 +1,3 @@
-// src/components/VideoCard.jsx
-
 function VideoCard({
   image,
   title,
@@ -12,7 +10,7 @@ function VideoCard({
   review,
   price,
 }) {
-  // fungsi untuk generate bintang pakai SVG
+  // generate star
   const renderStars = (rating) => {
     const stars = [];
     const fullStars = Math.floor(rating);
@@ -109,10 +107,10 @@ function VideoCard({
       {/* rating & harga */}
       <div className="rating-container flex items-center gap-2 mt-2 justify-between w-full">
         <div className="flex ">
-          <div className="rating flex gap-1">
+          <div className="rating flex gap-1 mr-4">
             {renderStars(parseFloat(rating))}
           </div>
-          <span className="review text-gray-600 text-sm">
+          <span className="review text-gray-600 text-sm ">
             {rating} ({review})
           </span>
         </div>

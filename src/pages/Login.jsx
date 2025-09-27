@@ -85,14 +85,13 @@ function Login() {
               </div>
             </div>
 
-            {/* Lupa Password */}
             <div className="mb-5 text-end">
               <a href="#" className="text-darkgray hover:underline text-md">
                 Lupa password?
               </a>
             </div>
 
-            {/* Tombol Masuk */}
+            {/* button */}
             <div>
               <NavButton
                 onClick={handleLogin}
@@ -103,7 +102,6 @@ function Login() {
               </NavButton>
             </div>
 
-            {/* Tombol Daftar */}
             <div>
               <NavButton
                 onClick={handleRegister}

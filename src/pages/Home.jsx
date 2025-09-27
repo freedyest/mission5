@@ -23,15 +23,15 @@ function Home() {
         <Header withUserMenu={true} />
 
         {/* <!--spot--> */}
-        <section id="spotlight" className="pt-28 bg-white rounded-lg">
-          <div className="relative w-full h-[500px] md:h-64 flex items-center justify-center rounded-lg">
+        <section id="spotlight" className="pt-28 md:pt-36 bg-white rounded-lg">
+          <div className="relative w-full h-[500px] md:h-80 flex items-center justify-center rounded-lg">
             <img
               src={`${import.meta.env.BASE_URL}spot.jpg`}
               alt="Spotlight"
               className="rounded-lg absolute inset-0 w-full h-full object-cover z-0"
             />
             <div className="absolute rounded-lg inset-0 bg-black bg-opacity-80 z-1"></div>
-            <div className="relative z-20 text-white text-center px-3 md:px-4">
+            <div className="md:w-3/4 relative z-20 text-white text-center px-3 md:px-4 md:py-12">
               <h2 className="text-3xl font-bold mb-2">
                 Revolusi Pembelajaran: Temukan Ilmu Baru melalui Platform Video
                 Interaktif!
@@ -42,9 +42,9 @@ function Home() {
                 juga dapat berpartisipasi dalam latihan interaktif yang akan
                 meningkatkan pemahaman Anda.
               </p>
-              <button className="px-2 h-12 mt-4 mx-auto bg-green-400 text-white hover:bg-green-600 font-semibold rounded-md">
+              <NavButton variant="primary" className="my-8 w-full md:w-1/2">
                 Temukan Video Course untuk Dipelajari!
-              </button>
+              </NavButton>
             </div>
           </div>
         </section>
@@ -74,7 +74,7 @@ function Home() {
               )
               .map((course, index) => (
                 <VideoCard
-                  key={`${course.id}-${index}`} // sementara pakai id+index
+                  key={`${course.id}`}
                   image={course.image}
                   title={course.title}
                   description={course.desc}
