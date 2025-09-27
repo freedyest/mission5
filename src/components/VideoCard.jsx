@@ -98,7 +98,7 @@ function VideoCard({
             <h4 className="font-semibold">{name}</h4>
             <p className="text-darkgray text-sm">{role}</p>
           </div>
-          <p className="hidden md:block font-semibold text-black ml-auto">
+          <p className="hidden md:flex font-semibold text-black mt-6 ">
             {company}
           </p>
         </div>
@@ -114,7 +114,7 @@ function VideoCard({
             {rating} ({review})
           </span>
         </div>
-        <span className="price font-semibold ml-auto text-green-600">
+        <span className="price font-bold ml-auto text-green-600 text-lg">
           {price}
         </span>
       </div>
