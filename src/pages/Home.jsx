@@ -31,18 +31,18 @@ function Home() {
               className="rounded-lg absolute inset-0 w-full h-full object-cover z-0"
             />
             <div className="absolute rounded-lg inset-0 bg-black bg-opacity-80 z-1"></div>
-            <div className="md:w-3/4 relative z-20 text-white text-center px-3 md:px-4 md:py-12">
-              <h2 className="text-3xl font-bold mb-2">
+            <div className="md:w-2/4 relative z-20 text-white text-center px-3 md:px-4 md:py-12">
+              <h2 className="text-3xl font-bold mb-2 md:my-8">
                 Revolusi Pembelajaran: Temukan Ilmu Baru melalui Platform Video
                 Interaktif!
               </h2>
-              <p className="text-lg">
+              <p className="text-lg ">
                 Temukan ilmu baru yang menarik dan mendalam melalui koleksi
                 video pembelajaran berkualitas tinggi. Tidak hanya itu, Anda
                 juga dapat berpartisipasi dalam latihan interaktif yang akan
                 meningkatkan pemahaman Anda.
               </p>
-              <NavButton variant="primary" className="my-8 w-full md:w-1/2">
+              <NavButton variant="primary" className="my-8 w-full md:w-3/4">
                 Temukan Video Course untuk Dipelajari!
               </NavButton>
             </div>
@@ -113,7 +113,7 @@ function Home() {
                   <input
                     type="text"
                     className="placeholder:text-center md:placeholder:text-start w-full p-2 md:pr-24 rounded-lg text-black placeholder:text-gray-500 border border-gray-300"
-                    placeholder="masukkan emailmu"
+                    placeholder="Masukkan emailmu"
                   />
                   <button className="justify-center flex w-full mt-6 md:w-auto md:m-0 md:absolute md:top-1/2 md:right-1 md:-translate-y-1/2 bg-yellow-500 px-3 py-1 rounded-lg font-bold text-white">
                     Subscribe
