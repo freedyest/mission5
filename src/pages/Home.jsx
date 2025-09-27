@@ -1,12 +1,24 @@
 import { useNavigate } from "react-router-dom";
-import Header from "../components/header.jsx";
+import Header from "../components/Header.jsx";
+import Footer from "../components/Footer.jsx";
 import NavButton from "../components/NavButton.jsx";
 import { courses } from "../data/courses";
 import VideoCard from "../components/VideoCard";
+import { useState } from "react";
+import FilterNav from "../components/Filternav.jsx";
 function Home() {
+  const [filter, setFilter] = useState("all");
+
+  const categories = [
+    { key: "all", label: "Semua Kelas" },
+    { key: "pemasaran", label: "Pemasaran" },
+    { key: "desain", label: "Desain" },
+    { key: "pengembangan", label: "Pengembangan Diri" },
+    { key: "bisnis", label: "Bisnis" },
+  ];
   return (
     <div className="">
-      <div className="px-2 md:px-10 bg-[#FFFDF3]">
+      <div className="px-2 md:px-20 bg-[#FFFDF3]">
         {/* <!--header--> */}
         <Header withUserMenu={true} />
 
@@ -50,51 +62,39 @@ function Home() {
         </section>
 
         {/* <!--mininav--> */}
-        <section id="mininav" className="text-darkgray px-2">
-          <nav className="flex flex-wrap items-center gap-8 pt-12 font-semibold text-lg">
-            <a href="#" data-filter="all" className="filter-btn active">
-              SemuaKelas
-            </a>
-            <a href="#" data-filter="pemasaran" className="filter-btn">
-              Pemasaran
-            </a>
-            <a href="#" data-filter="desain" className="filter-btn">
-              Desain
-            </a>
-            <a href="#" data-filter="pengembangan" className="filter-btn">
-              PengembanganDiri
-            </a>
-            <a href="#" data-filter="bisnis" className="filter-btn">
-              Bisnis
-            </a>
-          </nav>
-        </section>
+
+        <FilterNav categories={categories} onFilterChange={setFilter} />
 
         {/* <!--video course--> */}
         <section id="videocourse" className="w-full mt-10">
           <div className="w-full md:flex flex-wrap justify-evenly gap-6">
-            {courses.map((course) => (
-              <VideoCard
-                key={course.id}
-                image={course.image}
-                title={course.title}
-                description={course.desc}
-                avatar={course.avatar}
-                name={course.instructor}
-                role={course.role}
-                company={course.company}
-                rating={course.rating}
-                review={course.reviews}
-                price={course.price}
-              />
-            ))}
+            {courses
+              .filter(
+                (course) => filter === "all" || course.category === filter
+              )
+              .map((course, index) => (
+                <VideoCard
+                  key={`${course.id}-${index}`} // sementara pakai id+index
+                  image={course.image}
+                  title={course.title}
+                  description={course.desc}
+                  avatar={course.avatar}
+                  name={course.instructor}
+                  role={course.role}
+                  company={course.company}
+                  rating={course.rating}
+                  review={course.reviews}
+                  price={course.price}
+                />
+              ))}
           </div>
         </section>
+
         {/* <!--news--> */}
         <section id="newsletter" className=" bg-black">
           <div className="relative w-full h-auto flex items-center justify-center">
             <img
-              src="img/newsletter.jpg"
+              src={`${import.meta.env.BASE_URL}newsletter.jpg`}
               alt="Spotlight"
               className="absolute inset-0 w-full h-full object-cover z-0"
             />
@@ -126,159 +126,7 @@ function Home() {
       </div>
 
       {/* <!--footer--> */}
-      <footer className="bg-white mt-12 w-full pt-14 h-auto">
-        <div className="flex flex-wrap justify-between lg:flex-nowrap">
-          {/* <!-- Kiri --> */}
-          <div className="w-full mb-6 pl-4 pr-4 md:mb-0 md:w-1/3 md:pl-10 box-border">
-            <img src="img/logo3.png" alt="" className="w-auto h-16" />
-            <div className="md:w-full">
-              <h3 className="mt-6 font-bold text-md text-darkgray">
-                Gali Potensi Anda Melalui Pembelajaran Video di videobelajar.id!
-              </h3>
-              <p className="text-darkgray mt-3">
-                Jl. Usman Effendi No. 50 Lowokwaru, Malang
-              </p>
-              <p className="text-darkgray mt-3">+62-877-7123-1234</p>
-            </div>
-          </div>
-
-          {/* <!-- Kanan dengan dropdown --> */}
-          <div className="pl-4 pr-4 md:pr-10 md:flex justify-evenly w-full md:w-1/2">
-            {/* <!-- Kategori --> */}
-            <div className="w-full md:w-auto mb-4 md:mb-0">
-              <button className="w-full flex justify-between items-center text-black font-bold text-lg mb-2 md:mb-4 md:cursor-default dropdown-btn">
-                Kategori
-                <span className="md:hidden">▼</span>
-              </button>
-              <ul className="hidden md:block space-y-2 text-darkgray dropdown-content">
-                <li>
-                  <a href="#" className="hover:underline">
-                    Digital & Teknologi
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    Pemasaran
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    Manajemen Bisnis
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    Pengembangan Diri
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    Desain
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* <!-- Perusahaan --> */}
-            <div className="w-full md:w-auto mb-4 md:mb-0">
-              <button className="w-full flex justify-between items-center text-black font-bold text-lg mb-2 md:mb-4 md:cursor-default dropdown-btn">
-                Perusahaan
-                <span className="md:hidden">▼</span>
-              </button>
-              <ul className="hidden md:block space-y-2 text-darkgray dropdown-content">
-                <li>
-                  <a href="#" className="hover:underline">
-                    Tentang Kami
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    FAQ
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    Kebijakan Privasi
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    Ketentuan Layanan
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    Bantuan
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* <!-- Komunitas --> */}
-            <div className="w-full md:w-auto">
-              <button className="w-full flex justify-between items-center text-black font-bold text-lg mb-2 md:mb-4 md:cursor-default dropdown-btn">
-                Komunitas
-                <span className="md:hidden">▼</span>
-              </button>
-              <ul className="hidden md:block space-y-2 text-darkgray dropdown-content">
-                <li>
-                  <a href="#" className="hover:underline">
-                    Tips Sukses
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    Blog
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          {/* <!--credit--> */}
-          <hr className="border-t border-gray-300 mt-4" />
-          <div className="pl-4 flex flex-col-reverse md:flex-row md:text-center text-gray-500 text-sm py-4 md:px-10 justify-between pb-8 items-start">
-            {/* <!-- Copyright --> */}
-            <div className="mt-4 md:mt-0">
-              <p>@2025 Freedy estiawan All Rights Reserved.</p>
-            </div>
-
-            {/* <!-- Sosmed --> */}
-            <div className="flex space-x-4">
-              {/* <!-- LinkedIn --> */}
-              <a
-                href="https://www.linkedin.com/in/freedy-estiawan-bbb98b244/"
-                className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-400 text-gray-600 hover:bg-gray-600 hover:text-white transition"
-              >
-                <i className="fab fa-linkedin-in"></i>
-              </a>
-              {/* <!-- Facebook --> */}
-              <a
-                href="https://www.facebook.com/share/14MAKGZ9rkM/"
-                className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-400 text-gray-600 hover:bg-gray-600 hover:text-white transition"
-              >
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              {/* <!-- Instagram --> */}
-              <a
-                href="https://www.instagram.com/freedyestiw?igsh=OG0zZGZpazFyMWoz"
-                className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-400 text-gray-600 hover:bg-gray-600 hover:text-white transition"
-              >
-                <i className="fab fa-instagram"></i>
-              </a>
-              {/* <!-- Twitter --> */}
-              <a
-                href="#"
-                className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-400 text-gray-600 hover:bg-gray-600 hover:text-white transition"
-              >
-                <i className="fab fa-twitter"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

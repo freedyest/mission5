@@ -1,3 +1,5 @@
+// src/components/VideoCard.jsx
+
 function VideoCard({
   image,
   title,
@@ -10,33 +12,64 @@ function VideoCard({
   review,
   price,
 }) {
-  // fungsi untuk generate bintang
+  // fungsi untuk generate bintang pakai SVG
   const renderStars = (rating) => {
     const stars = [];
     const fullStars = Math.floor(rating);
     const hasHalf = rating % 1 !== 0;
 
+    // bintang penuh
     for (let i = 0; i < fullStars; i++) {
       stars.push(
-        <i key={`full-${i}`} className="fa-solid fa-star text-yellow-500"></i>
+        <svg
+          key={`full-${i}`}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          className="w-4 h-4 text-yellow-500"
+        >
+          <path d="M12 .587l3.668 7.431L24 9.753l-6 5.847 1.417 8.268L12 19.771l-7.417 4.097L6 15.6 0 9.753l8.332-1.735z" />
+        </svg>
       );
     }
 
+    // bintang setengah
     if (hasHalf) {
       stars.push(
-        <i
+        <svg
           key="half"
-          className="fa-solid fa-star-half-stroke text-yellow-500"
-        ></i>
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          className="w-4 h-4 text-yellow-500"
+        >
+          <defs>
+            <linearGradient id="halfGrad">
+              <stop offset="50%" stopColor="currentColor" />
+              <stop offset="50%" stopColor="transparent" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M12 .587l3.668 7.431L24 9.753l-6 5.847 1.417 8.268L12 19.771l-7.417 4.097L6 15.6 0 9.753l8.332-1.735z"
+            fill="url(#halfGrad)"
+            stroke="currentColor"
+          />
+        </svg>
       );
     }
 
+    // bintang kosong
     while (stars.length < 5) {
       stars.push(
-        <i
+        <svg
           key={`empty-${stars.length}`}
-          className="fa-regular fa-star text-yellow-500"
-        ></i>
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          className="w-4 h-4 text-yellow-500"
+        >
+          <path d="M12 .587l3.668 7.431L24 9.753l-6 5.847 1.417 8.268L12 19.771l-7.417 4.097L6 15.6 0 9.753l8.332-1.735z" />
+        </svg>
       );
     }
 
@@ -44,26 +77,28 @@ function VideoCard({
   };
 
   return (
-    <div className="containervideo desain">
+    <div className="containervideo desain border p-3 rounded-lg shadow-sm">
+      {/* gambar utama */}
       <img
         src={image}
         alt={title}
-        className="w-1/3 box-border h-32 rounded-lg md:videoimg"
+        className="w-2/5 pr-2 md:pr-0 md:w-full box-border h-32 md:h-48 rounded-lg md:videoimg md:mb-4"
       />
 
-      <div className="w-3/5 md:flex md:w-full md:flex-wrap">
-        <h3 className="font-bold md:w-full">{title}</h3>
-        <p className="hidden md:flex">{description}</p>
+      {/* info course */}
+      <div className="w-3/5 box-border md:flex md:w-full md:flex-wrap ">
+        <h3 className="font-bold text-lg md:w-full md:mb-4">{title}</h3>
+        <p className="hidden md:flex text-gray-600">{description}</p>
 
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center mt-2">
           <img
             src={avatar}
             alt={name}
-            className="py-4 avatarimg rounded-lg w-1/5"
+            className="avatarimg rounded-lg w-1/5 md:h-12 md:w-auto  object-cover"
           />
           <div className="w-4/5 p-2">
             <h4 className="font-semibold">{name}</h4>
-            <p className="text-darkgray">{role}</p>
+            <p className="text-darkgray text-sm">{role}</p>
           </div>
           <p className="hidden md:block font-semibold text-black ml-auto">
             {company}
@@ -71,14 +106,19 @@ function VideoCard({
         </div>
       </div>
 
-      <div className="rating-container flex items-center gap-2">
-        <div className="rating flex gap-1">
-          {renderStars(parseFloat(rating))}
+      {/* rating & harga */}
+      <div className="rating-container flex items-center gap-2 mt-2 justify-between w-full">
+        <div className="flex ">
+          <div className="rating flex gap-1">
+            {renderStars(parseFloat(rating))}
+          </div>
+          <span className="review text-gray-600 text-sm">
+            {rating} ({review})
+          </span>
         </div>
-        <span className="review text-gray-600 text-sm">
-          {rating} ({review})
+        <span className="price font-semibold ml-auto text-green-600">
+          {price}
         </span>
-        <span className="price font-semibold ml-auto">{price}</span>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Header from "../components/header.jsx";
+import Header from "../components/Header.jsx";
 import eyesOff from "../assets/eyesoff.png";
 import eyesOn from "../assets/eyeson.png";
 import NavButton from "../components/NavButton.jsx";
