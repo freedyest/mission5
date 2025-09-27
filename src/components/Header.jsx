@@ -33,7 +33,7 @@ function Header({ withUserMenu = false }) {
           {/* Logo kiri */}
           <div className="flex items-center">
             <img
-              src={`${import.meta.env.BASE_URL}Logo.png`}
+              src={`${import.meta.env.BASE_URL}logo.png`}
               alt="Logo"
               className="h-12 w-auto"
             />

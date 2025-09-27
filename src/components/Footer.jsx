@@ -38,7 +38,7 @@ function Footer() {
         {/* Kiri */}
         <div className="w-full mb-6 pl-4 pr-4 md:mb-0 md:w-1/3 md:p-0 box-border">
           <img
-            src={`${import.meta.env.BASE_URL}Logo.png`}
+            src={`${import.meta.env.BASE_URL}logo.png`}
             alt=""
             className="w-auto h-16"
           />
