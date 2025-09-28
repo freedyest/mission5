@@ -5,7 +5,7 @@ import NavButton from "../components/NavButton.jsx";
 import { courses } from "../data/courses";
 import VideoCard from "../components/VideoCard";
 import { useState } from "react";
-import FilterNav from "../components/FilterNav.jsx";
+import FilterNav from "../components/Filternav.jsx";
 function Home() {
   const [filter, setFilter] = useState("all");
 
